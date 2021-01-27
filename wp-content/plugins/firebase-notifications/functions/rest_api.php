@@ -20,7 +20,9 @@ function fcm_rest_api_messages ( $language, $to = Null, $id = Null ) {
     foreach ( $messages as $message ) {
       if ( $message['answer'] != Null && ( $to === Null || $message['request']['to'] == "/topics/" . $to ) ) {
             $return[$n]['id'] = $message['id'];
-            $return[$n]['timestamp'] = $message['timestamp'];
+            $date = new DateTime( $message['timestamp'] );
+            $timezone = new DateTimeZone( get_option( 'timezone_string' ) );
+            $date = date_timezone_set( $date, $timezone );
             $return[$n]['title'] = $message['request']['notification']['title'];
             $return[$n]['message'] = $message['request']['notification']['body'];
             $n++;
