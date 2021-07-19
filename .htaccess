@@ -37,6 +37,10 @@ RewriteRule ^(?!wp-(content|includes))(.*)$ https://integreat.app/$1$2 [R=301,L]
 	Order Allow,Deny
 	Deny from all
 </Files>
+<Files export-database.php>
+	Order Allow,Deny
+	Deny from all
+</Files>
 <Files wp-config.php>
 	Order Allow,Deny
 	Deny from all
